@@ -823,6 +823,27 @@
         });
     }, { threshold: 0.08 });
     reveals.forEach(el => observer.observe(el));
+
+    function copyEmail() {
+        const parts = ['sergalexger', 'gmail.com'];
+        const email = parts[0] + '@' + parts[1];
+        navigator.clipboard.writeText(email).then(() => {
+            const btn = document.getElementById('ctaBtn');
+            const label = document.getElementById('ctaLabel');
+            const icon = document.getElementById('ctaIcon');
+            const sub = document.getElementById('ctaSub');
+            label.textContent = 'Skopiowano!';
+            icon.innerHTML = '<polyline points="20 6 9 17 4 12" stroke-width="2.5"/>';
+            btn.style.background = '#16a34a';
+            sub.textContent = email;
+            setTimeout(() => {
+                label.textContent = 'Skopiuj Adres Email';
+                icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
+                btn.style.background = '';
+                sub.textContent = 'Pan Celebias zna mój kontakt';
+            }, 2500);
+        });
+    }
 </script>
 </body>
 </html>
